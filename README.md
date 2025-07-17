@@ -1,6 +1,6 @@
 # autoenv.fish
 
-Autoenv.fish is a plugin for [fishshell](https://fishshell.com/) that automatically loads environment variables from a `.env` file in the current project.
+Autoenv.fish is a plugin for [Fish Shell](https://fishshell.com/) that automatically loads environment variables from a `.env` file in the current project.
 
 ## Features
 
