@@ -1,12 +1,12 @@
 
 function autoenv --on-variable PWD
-  if is_venv_active && is_child_dir
+  if is_env_active && is_child_dir
     return
   end
 
   set project_dir (get_project_dir)
 
-  if is_venv_active && not is_child_dir
+  if is_env_active && not is_child_dir
     deactivate_env
   end
 
@@ -15,7 +15,7 @@ function autoenv --on-variable PWD
   end
 end
 
-function is_venv_active
+function is_env_active
   test -n "$OLD_PROJECT_DIR"
 end
 
