@@ -51,7 +51,9 @@ function activate_env -a project_dir
   for line in (cat $project_dir/.env)
     if not string match -qr '^#|^$' $line
       set item (string split -m 1 "=" $line)
-      set -gx $item[1] $item[2]
+      set key $item[1]
+      set value (string trim --chars '"\'' $item[2])
+      set -gx $key $value
     end
   end
   set -gx OLD_PROJECT_DIR $project_dir
