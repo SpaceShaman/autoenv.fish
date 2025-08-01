@@ -1,5 +1,5 @@
 
-function autoenv --on-variable PWD
+function autoenv --on-event fish_prompt
   if is_env_active && is_child_dir
     return
   end
