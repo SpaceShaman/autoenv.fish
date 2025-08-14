@@ -17,6 +17,12 @@ A [Fish Shell](https://fishshell.com/) plugin that automatically loads environme
 fisher install SpaceShaman/autoenv.fish
 ```
 
+### With [reff](https://github.com/danielb2/reef)
+
+```fish
+reff install SpaceShaman/autoenv.fish
+```
+
 ### Manual
 
 Copy the `conf.d/autoenv.fish` file to your `~/.config/fish/conf.d` directory.
