@@ -1,4 +1,3 @@
-
 function autoenv --on-event fish_prompt
   if is_env_active && is_child_dir
     return
@@ -16,13 +15,13 @@ function autoenv --on-event fish_prompt
 end
 
 function is_env_active
-  test -n "$OLD_PROJECT_DIR"
+  test -n "$AUTOENV_OLD_PROJECT_DIR"
 end
 
 function is_child_dir
-  if test -n "$OLD_PROJECT_DIR"
+  if test -n "$AUTOENV_OLD_PROJECT_DIR"
     switch $PWD
-      case $OLD_PROJECT_DIR\*
+      case $AUTOENV_OLD_PROJECT_DIR\*
         return 0
       case \*
         return 1
@@ -56,15 +55,15 @@ function activate_env -a project_dir
       set -gx $key $value
     end
   end
-  set -gx OLD_PROJECT_DIR $project_dir
+  set -gx AUTOENV_OLD_PROJECT_DIR $project_dir
 end
 
 function deactivate_env
-  for line in (cat $OLD_PROJECT_DIR/.env)
+  for line in (cat $AUTOENV_OLD_PROJECT_DIR/.env)
     if not string match -qr '^#|^$' $line
       set item (string split -m 1 "=" $line)
       set -e $item[1]
     end
   end
-  set -e OLD_PROJECT_DIR
+  set -e AUTOENV_OLD_PROJECT_DIR
 end
