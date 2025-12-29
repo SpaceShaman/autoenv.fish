@@ -8,6 +8,7 @@ A [Fish Shell](https://fishshell.com/) plugin that automatically loads environme
 - 🐟 Lightweight and runs on every directory change
 - 🔻 Automatically erases environment variables when leaving the project directory.
 - 🐙 Supports Git repositories (uses repo root as project dir)
+- 🔄 Supports environment variable expansion using `${VAR}` and `$VAR` syntax
 
 ## Installation
 
