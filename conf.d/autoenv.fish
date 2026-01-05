@@ -62,15 +62,15 @@ end
 
 function expand_env_vars -a value
     # Match ${VAR} or $VAR patterns and replace with env var values
-    while string match -qr '\$\{[a-zA-Z_][a-zA-Z0-9_]*\}' $value
-        set var_match (string match -r '\$\{([a-zA-Z_][a-zA-Z0-9_]*)\}' $value)
+    while string match -qr '\$\{[a-zA-Z_][a-zA-Z0-9_]*\}' -- $value
+        set var_match (string match -r '\$\{([a-zA-Z_][a-zA-Z0-9_]*)\}' -- $value)
         set var_name $var_match[2]
         set var_value (eval echo \$$var_name)
         set value (string replace "\${$var_name}" "$var_value" $value)
     end
     # Also support $VAR syntax (without braces)
-    while string match -qr '\$[a-zA-Z_][a-zA-Z0-9_]*' $value
-        set var_match (string match -r '\$([a-zA-Z_][a-zA-Z0-9_]*)' $value)
+    while string match -qr '\$[a-zA-Z_][a-zA-Z0-9_]*' -- $value
+        set var_match (string match -r '\$([a-zA-Z_][a-zA-Z0-9_]*)' -- $value)
         set var_name $var_match[2]
         set var_value (eval echo \$$var_name)
         set value (string replace "\$$var_name" "$var_value" $value)
